@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Voz de la Capital Soyera</title>
+  <link rel="icon" href="logo capital soyera.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('fondo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #000;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 70vh;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 60px;
+      width: 90%;
+      left: 5%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 110px;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      border-radius: 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+    }
+
+    .nav-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .nav-button button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s;
+      margin-bottom: 5px;
+    }
+
+    .nav-button .btn-radio {
+      width: 80px;
+      height: 80px;
+    }
+
+    .bottom-nav button.active {
+      transform: scale(1.1);
+      outline: 3px solid #00bfff;
+      box-shadow: 0 0 15px 5px rgba(0, 191, 255, 0.6);
+    }
+
+    .btn-radio { background-image: url('boton radio.png'); }
+    .btn-tv { background-image: url('boton tv.png'); }
+    .btn-tv2 { background-image: url('boton tv.png'); }
+    .btn-info { background-image: url('boton info.png'); }
+    .btn-redes { background-image: url('boton redes.png'); }
+
+    .play-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+      flex-direction: column;
+    }
+
+    .play-button button {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: none;
+      background: url('play.png') no-repeat center center;
+      background-size: contain;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .play-button button:hover {
+      transform: scale(1.1);
+    }
+
+    .status-text {
+      margin-top: 20px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    #ondas {
+      margin-top: 20px;
+      width: 150px;
+      height: auto;
+      display: none;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 85vh;
+      border: none;
+      margin: auto;
+      display: block;
+    }
+
+    .titulo-con-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .titulo-con-logo img {
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- RADIO -->
+  <div id="radio" class="tab-content active">
+    <h2 class="titulo-con-logo">
+      <img src="logo capital soyera.png" alt="Logo Capital Soyera">
+      RADIO LA VOZ DE LA CAPITAL SOYERA
+    </h2>
+    <p>Escucha nuestra radio en línea 24/7, incluso con la pantalla bloqueada mientras trabajas o estudias.</p>
+    <div class="play-button">
+      <button id="playBtn" onclick="toggleRadio()"></button>
+      <div id="statusText" class="status-text">REPRODUCIR</div>
+      <img id="ondas" src="ondas de radio.webp" alt="ondas de radio">
+    </div>
+  </div>
+
+  <!-- TV -->
+  <div id="tv" class="tab-content">
+    <h2>📺 RED UNO EN VIVO</h2>
+    <p>Transmisión de señal abierta de la red UNO:</p>
+    <div id="tvContainer"></div>
+  </div>
+
+  <!-- TV 2 -->
+  <div id="tv2" class="tab-content">
+    <h2>📺 UNITEL EN VIVO</h2>
+    <p>Transmisión de señal abierta de la red UNITEL:</p>
+    <div id="tv2Container"></div>
+  </div>
+
+  <!-- INFO -->
+  <div id="info" class="tab-content">
+    <h2 class="titulo-con-logo">
+      <img src="logo capital soyera noticias.png" alt="Logo Noticias">
+      CAPITAL SOYERA NOTICIAS
+    </h2>
+    <p>Síguenos en Facebook y mantente informado de todo lo que pasa en nuestro municipio y en toda Bolivia:</p>
+    <iframe 
+      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcapitalsoyera&tabs=timeline&width=350&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
+      scrolling="no" 
+      allowfullscreen="true" 
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+  </div>
+
+  <!-- REDES -->
+  <div id="redes" class="tab-content">
+    <h2>🌐 REDES SOCIALES</h2>
+    <p>SÍGUENOS EN TODAS NUESTRAS REDES:</p>
+    <!-- Aquí puedes agregar enlaces o íconos a Facebook, TikTok, Instagram, etc. -->
+    <ul>
+      <li><a href="https://www.facebook.com/capitalsoyera" target="_blank" style="color:white;">📘 Facebook</a></li>
+      <li><a href="https://www.instagram.com/" target="_blank" style="color:white;">📸 Instagram</a></li>
+      <li><a href="https://www.tiktok.com/" target="_blank" style="color:white;">🎵 TikTok</a></li>
+    </ul>
+  </div>
+
+  <!-- Navegación inferior -->
+  <div class="bottom-nav">
+    <div class="nav-button">
+      <button class="btn-tv" onclick="mostrarTab('tv', this)"></button>
+      <span>RED UNO</span>
+    </div>
+    <div class="nav-button">
+      <button class="btn-info" onclick="mostrarTab('info', this)"></button>
+      <span>NOTICIAS</span>
+    </div>
+    <div class="nav-button">
+      <button class="btn-radio active" onclick="mostrarTab('radio', this)"></button>
+      <span>RADIO</span>
+    </div>
+    <div class="nav-button">
+      <button class="btn-redes" onclick="mostrarTab('redes', this)"></button>
+      <span>REDES</span>
+    </div>
+    <div class="nav-button">
+      <button class="btn-tv2" onclick="mostrarTab('tv2', this)"></button>
+      <span>UNITEL</span>
+    </div>
+  </div>
+
+  <!-- Audio persistente -->
+  <audio id="player" src="https://listen.radioking.com/radio/734810/stream/801116"></audio>
+
+  <script>
+    const player = document.getElementById('player');
+    const playBtn = document.getElementById('playBtn');
+    const ondas = document.getElementById('ondas');
+    const statusText = document.getElementById('statusText');
+
+    function mostrarTab(id, btn) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+
+      const tvContainer = document.getElementById('tvContainer');
+      const tv2Container = document.getElementById('tv2Container');
+      tvContainer.innerHTML = "";
+      tv2Container.innerHTML = "";
+
+      if (id === 'tv') {
+        const iframe = document.createElement('iframe');
+        iframe.src = "https://www.dailymotion.com/embed/video/x9ie7h0";
+        iframe.allow = "autoplay; fullscreen; picture-in-picture";
+        iframe.id = "tvIframe";
+        tvContainer.appendChild(iframe);
+      }
+
+      if (id === 'tv2') {
+        const iframe2 = document.createElement('iframe');
+        iframe2.src = "https://www.dailymotion.com/embed/video/x7vsezg";
+        iframe2.allow = "autoplay; fullscreen; picture-in-picture";
+        iframe2.id = "tv2Iframe";
+        tv2Container.appendChild(iframe2);
+      }
+
+      if (id !== 'radio') {
+        player.pause();
+        playBtn.style.backgroundImage = "url('play.png')";
+        ondas.style.display = 'none';
+        statusText.textContent = "REPRODUCIR";
+      }
+    }
+
+    function toggleRadio() {
+      if (player.paused) {
+        player.play();
+        playBtn.style.backgroundImage = "url('pausa.png')";
+        ondas.style.display = 'block';
+        statusText.textContent = "REPRODUCIENDO";
+      } else {
+        player.pause();
+        playBtn.style.backgroundImage = "url('play.png')";
+        ondas.style.display = 'none';
+        statusText.textContent = "REPRODUCIR";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      playBtn.style.backgroundImage = "url('play.png')";
+      statusText.textContent = "REPRODUCIR";
+    });
+  </script>
+
+</body>
+</html>
