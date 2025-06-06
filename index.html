@@ -349,7 +349,8 @@
 
   const horarios = [
     { inicio: "07:30", fin: "09:30", url: "https://srv3.elittehosting.com:8060/stream" },
-    { inicio: "15:40", fin: "20:00", url: "https://stream-152.zeno.fm/pnwpbyfambruv" },
+    { inicio: "12:10", fin: "13:55", url: "https://stream-152.zeno.fm/pnwpbyfambruv" },
+    { inicio: "16:08", fin: "20:00", url: "https://stream-152.zeno.fm/pnwpbyfambruv" },
     { inicio: "00:00", fin: "23:59", url: "https://listen.radioking.com/radio/739001/stream/805382" }
   ];
 
@@ -359,7 +360,15 @@
   }
 
   function obtenerURLActualSegunHora() {
-    const minutos = new Date().getHours() * 60 + new Date().getMinutes();
+  const fecha = new Date();
+  const dia = fecha.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+  const minutos = fecha.getHours() * 60 + fecha.getMinutes();
+
+  if (dia === 6 || dia === 0) {
+    // Sábado (6) o Domingo (0) => usar solo el primer enlace
+    return horarios[0].url;
+  } else {
+    // Lunes a Viernes => aplicar según horario
     for (let slot of horarios) {
       if (minutos >= convertirHoraAMinutos(slot.inicio) && minutos <= convertirHoraAMinutos(slot.fin)) {
         return slot.url;
@@ -367,6 +376,7 @@
     }
     return horarios[horarios.length - 1].url;
   }
+}
 
   let radio = new Audio();
   let radioReproduciendo = false;
@@ -400,10 +410,13 @@
   }
 
   setInterval(() => {
-  if (radioReproduciendo) {
-    reproducirRadio(); // Siempre recarga cada minuto
-  }
-}, 60000);
+    if (radioReproduciendo) {
+      const nuevaURL = obtenerURLActualSegunHora();
+      if (currentURL !== nuevaURL) {
+        reproducirRadio(); // Actualiza la URL y reinicia
+      }
+    }
+  }, 60000); // chequea cada minuto
 
   window.onload = () => {
     mostrarTab('radio', document.querySelector('.btn-radio'));
