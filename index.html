@@ -349,7 +349,7 @@
 
   const horarios = [
     { inicio: "07:30", fin: "09:30", url: "https://srv3.elittehosting.com:8060/stream" },
-    { inicio: "15:30", fin: "20:00", url: "https://stream-152.zeno.fm/pnwpbyfambruv" },
+    { inicio: "15:40", fin: "20:00", url: "https://stream-152.zeno.fm/pnwpbyfambruv" },
     { inicio: "00:00", fin: "23:59", url: "https://listen.radioking.com/radio/739001/stream/805382" }
   ];
 
@@ -400,13 +400,10 @@
   }
 
   setInterval(() => {
-    if (radioReproduciendo) {
-      const nuevaURL = obtenerURLActualSegunHora();
-      if (currentURL !== nuevaURL) {
-        reproducirRadio(); // Actualiza la URL y reinicia
-      }
-    }
-  }, 60000); // chequea cada minuto
+  if (radioReproduciendo) {
+    reproducirRadio(); // Siempre recarga cada minuto
+  }
+}, 60000);
 
   window.onload = () => {
     mostrarTab('radio', document.querySelector('.btn-radio'));
