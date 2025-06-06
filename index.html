@@ -128,7 +128,6 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* EN VIVO badge */
     #enVivo {
       position: absolute;
       top: 100px;
@@ -256,7 +255,7 @@
 </head>
 <body>
 
-<!-- Botón flotante de TV -->
+<!-- Botón TV -->
 <button class="tv-button" onclick="toggleTVMenu()">TV 📺</button>
 <div class="tv-dropdown" id="tvDropdown">
   <a href="https://www.dailymotion.com/video/x9ie7h0" target="_blank">RED UNO</a>
@@ -274,21 +273,18 @@
     <button id="playBtn" onclick="toggleRadio()"></button>
     <div id="statusText" class="status-text">REPRODUCIR</div>
     <img id="ondas" src="ondas de radio.webp" alt="ondas de radio" />
-    </div>
-
-  <div style="text-align: center; margin-top: 10px; font-size: 16px;">
+  </div>
+  <div style="text-align: center; margin-top: 10px;">
     ESCÚCHANOS ONLINE 24/7<br>
-    <span style="color: rgb(255, 217, 0);">INCLUSO CON LA PANTALLA BLOQUEADA.</span><br>
+    <span style="color: yellow;">INCLUSO CON LA PANTALLA BLOQUEADA.</span><br>
     ¡Ideal para trabajar, estudiar o en tu momento de relax!
   </div>
-
-  <div style="display: flex; gap: 20px; padding-top: 50px; justify-content: center;">
-    <a href="https://wa.me/59160025300" target="_blank"><img src="icono-whatsapp.png" alt="WhatsApp" style="width: 50px;"></a>
-    <a href="https://www.facebook.com/capitalsoyera" target="_blank"><img src="icono-facebook.png" alt="Facebook" style="width: 50px;"></a>
-    <a href="https://www.tiktok.com/@capitalsoyera.noticias" target="_blank"><img src="icono-tiktok.png" alt="TikTok" style="width: 50px;"></a>
-    <a href="https://www.youtube.com/@ArqZen" target="_blank"><img src="icono-youtube.png" alt="YouTube" style="width: 50px;"></a>
+  <div style="display: flex; gap: 20px; justify-content: center; margin-top: 50px;">
+    <a href="https://wa.me/59160025300" target="_blank"><img src="icono-whatsapp.png" style="width: 50px;"></a>
+    <a href="https://www.facebook.com/capitalsoyera" target="_blank"><img src="icono-facebook.png" style="width: 50px;"></a>
+    <a href="https://www.tiktok.com/@capitalsoyera.noticias" target="_blank"><img src="icono-tiktok.png" style="width: 50px;"></a>
+    <a href="https://www.youtube.com/@ArqZen" target="_blank"><img src="icono-youtube.png" style="width: 50px;"></a>
   </div>
-
   <div style="text-align: center; font-size: 14px; margin-bottom: 20px;">
     ¡Síguenos en todas nuestras redes sociales!
   </div>
@@ -304,22 +300,22 @@
 </div>
 
 <!-- BUSCADOR -->
- <div id="buscador" class="tab-content">
+<div id="buscador" class="tab-content">
   <h4 class="titulo-con-logo">
-    <img src="boton buscador.png" alt="Logo Noticias" />
+    <img src="boton buscador.png" alt="Logo Buscador" />
     ENCUENTRA LO QUE NECESITES DENTRO DE CUATRO CAÑADAS
   </h4>
   <iframe src="lista.html"></iframe>
- </div>
+</div>
 
-<!-- BANNER ROTATIVO -->
- <div class="banner-carousel">
-  <a href="https://wa.me/59160025300" target="_blank"><img src="banner1.png" alt="Banner 1"></a>
+<!-- BANNERS -->
+<div class="banner-carousel">
+  <a href="https://wa.me/59160025300" target="_blank" class="active"><img src="banner1.png" alt="Banner 1"></a>
   <a href="https://wa.me/59170037128" target="_blank"><img src="banner2.png" alt="Banner 2"></a>
   <a href="https://www.facebook.com/Arquitecto.David.Yonatan" target="_blank"><img src="banner3.png" alt="Banner 3"></a>
- </div>
+</div>
 
-<!-- NAVEGACIÓN INFERIOR -->
+<!-- BARRA DE NAVEGACIÓN -->
 <nav class="bottom-nav">
   <div class="nav-button">
     <button class="btn-info" onclick="mostrarTab('info', this)"></button>
@@ -337,42 +333,25 @@
 
 <script>
   function mostrarTab(tabId, btn) {
-    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
-
-    document.querySelectorAll('.bottom-nav button').forEach(button => button.classList.remove('active'));
+    document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    const tvButton = document.querySelector('.tv-button');
-    const tvDropdown = document.getElementById('tvDropdown');
-    if (tabId === 'radio') {
-      tvButton.style.display = 'block';
-    } else {
-      tvButton.style.display = 'none';
-      tvDropdown.style.display = 'none';
-    }
+    document.querySelector('.tv-button').style.display = tabId === 'radio' ? 'block' : 'none';
+    document.getElementById('tvDropdown').style.display = 'none';
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    mostrarTab('radio', document.querySelector('.btn-radio'));
-  });
+  function toggleTVMenu() {
+    const menu = document.getElementById('tvDropdown');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
 
   const horarios = [
-    {
-      inicio: "07:30",
-      fin: "09:30",
-      url: "https://srv3.elittehosting.com:8060/stream"
-    },
-    {
-      inicio: "12:00",
-      fin: "14:00",
-      url: "https://stream-152.zeno.fm/pnwpbyfambruv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJwbndwYnlmYW1icnV2IiwiaG9zdCI6InN0cmVhbS0xNTIuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Ilg0UGpsNGk1VGJ1RmJXZFB0bFFCcGciLCJpYXQiOjE3NDkyMTk4MzUsImV4cCI6MTc0OTIxOTg5NX0.m9RSuILyblzhYpou9__NGmO8qbdXdEyueANUUzjx_uo"
-    },
-    {
-      inicio: "00:00",
-      fin: "23:59",
-      url: "https://listen.radioking.com/radio/739001/stream/805382"
-    }
+    { inicio: "07:30", fin: "09:30", url: "https://srv3.elittehosting.com:8060/stream" },
+    { inicio: "12:10", fin: "13:55", url: "https://stream-152.zeno.fm/pnwpbyfambruv" },
+    { inicio: "15:22", fin: "20:00", url: "https://stream-152.zeno.fm/pnwpbyfambruv" },
+    { inicio: "00:00", fin: "23:59", url: "https://listen.radioking.com/radio/739001/stream/805382" }
   ];
 
   function convertirHoraAMinutos(horaStr) {
@@ -380,17 +359,10 @@
     return h * 60 + m;
   }
 
-  function getHoraActualEnMinutos() {
-    const ahora = new Date();
-    return ahora.getHours() * 60 + ahora.getMinutes();
-  }
-
   function obtenerURLActualSegunHora() {
-    const minutos = getHoraActualEnMinutos();
+    const minutos = new Date().getHours() * 60 + new Date().getMinutes();
     for (let slot of horarios) {
-      const inicio = convertirHoraAMinutos(slot.inicio);
-      const fin = convertirHoraAMinutos(slot.fin);
-      if (minutos >= inicio && minutos <= fin) {
+      if (minutos >= convertirHoraAMinutos(slot.inicio) && minutos <= convertirHoraAMinutos(slot.fin)) {
         return slot.url;
       }
     }
@@ -404,11 +376,10 @@
   function reproducirRadio() {
     const nuevaURL = obtenerURLActualSegunHora();
     if (currentURL !== nuevaURL) {
-      radio.src = nuevaURL + "?t=" + new Date().getTime(); // prevenir cacheo
+      radio.src = nuevaURL + "?t=" + Date.now();
       currentURL = nuevaURL;
     }
-
-    radio.play().catch(e => console.log("Error al reproducir:", e));
+    radio.play();
     radioReproduciendo = true;
     document.getElementById("playBtn").style.backgroundImage = "url('pausa.png')";
     document.getElementById("statusText").innerText = "DETENER";
@@ -426,49 +397,30 @@
   }
 
   function toggleRadio() {
-    if (radioReproduciendo) {
-      detenerRadio();
-    } else {
-      reproducirRadio();
-    }
+    radioReproduciendo ? detenerRadio() : reproducirRadio();
   }
 
-  // Recarga el stream cada 1 minuto si está sonando
   setInterval(() => {
     if (radioReproduciendo) {
-      reproducirRadio();
+      const nuevaURL = obtenerURLActualSegunHora();
+      if (currentURL !== nuevaURL) {
+        reproducirRadio(); // Actualiza la URL y reinicia
+      }
     }
-  }, 60000);
+  }, 60000); // chequea cada minuto
 
-  // Carga inicial (sin reproducir)
-  document.addEventListener("DOMContentLoaded", () => {
-    currentURL = obtenerURLActualSegunHora();
-    radio.src = currentURL;
-  });
+  window.onload = () => {
+    mostrarTab('radio', document.querySelector('.btn-radio'));
+  };
 
-  function toggleTVMenu() {
-    const dropdown = document.getElementById('tvDropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-  }
-
-  window.addEventListener('click', (e) => {
-    if (!e.target.matches('.tv-button')) {
-      document.getElementById('tvDropdown').style.display = 'none';
-    }
-  });
-
-  // Banner rotativo
+  // Banner rotativo automático
+  let bannerIndex = 0;
   const banners = document.querySelectorAll('.banner-carousel a');
-  let currentBanner = 0;
-
-  function showNextBanner() {
-    banners[currentBanner].classList.remove('active');
-    currentBanner = (currentBanner + 1) % banners.length;
-    banners[currentBanner].classList.add('active');
-  }
-
-  banners[0].classList.add('active');
-  setInterval(showNextBanner, 8000);
+  setInterval(() => {
+    banners[bannerIndex].classList.remove('active');
+    bannerIndex = (bannerIndex + 1) % banners.length;
+    banners[bannerIndex].classList.add('active');
+  }, 5000);
 </script>
 </body>
 </html>
