@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guía del Cuatro Cañadas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: transparent;
+      margin: 0;
+    }
+
+    .search-bar {
+      margin: 0rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 90%;
+      max-width: 600px;
+      padding: 0.7rem;
+      border-radius: 15px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .accordion {
+      margin: 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .accordion-item {
+      background: transparent;
+      border-radius: 15px;
+      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+      margin-bottom: 0.3rem;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background-color: #1eff00c7;
+      color: rgb(0, 0, 0);
+      padding: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.5);
+      border: 2px solid white;
+      border-radius: 15px;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 1rem;
+      border-top: 0px solid #ccc;
+    }
+
+    .card {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .card h4 {
+      margin: 0;
+      color: #000000;
+      font-size: 1.1rem;
+    }
+
+    .card-details {
+      display: none;
+      margin-top: 0.1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .card-details p {
+      margin: 0.1rem 0;
+    }
+
+    .card-details a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+      font-weight: bold;
+      font-size: 0.8rem;
+      user-select: none;
+    }
+
+    .accordion-header.active .arrow {
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.4rem;
+        padding: 0.8rem;
+      }
+
+      .search-bar input {
+        width: 95%;
+        font-size: 0.9rem;
+        padding: 0.9rem;
+      }
+
+      .accordion {
+        margin: 0.5rem;
+      }
+
+      .accordion-header {
+        padding: 0.6rem;
+        font-size: 1rem;
+      }
+
+      .card {
+        padding: 0.3rem;
+      }
+
+      .card h4 {
+        font-size: 1rem;
+      }
+
+      .card-details {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Busca lo que necesitas (taller, segip, colegio, etc...)" />
+</div>
+
+<!-- Botón principal tipo encabezado con flechita -->
+<div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header" id="toggleCategorias">
+      BUSCAR POR CATEGORÍAS AQUÍ
+      <span class="arrow">▶</span>
+    </div>
+    <div class="accordion-content" id="accordionContainer">
+
+      <!-- EJEMPLO DE CATEGORÍA -->
+      <div class="accordion-item">
+        <div class="accordion-header">
+          SERVICIOS PÚBLICOS
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" alcaldia municipal gamcc gobierno autonomo municipal  ">
+            <h4> ALCALDIA MUNICIPAL GAMCC  </h4>
+            <div class="card-details">  
+              <p>📍  Frente a la Plaza Principal </p>
+              <p>🕒 De 8:00am a 12:00pm - 14:00pm a 18:00pm </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/Uc7TYKypUXm6jXmq9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" defensoria de la niñez y adolecencia dnna slim dna niña niño adolecente ">
+            <h4> DEFENSORIA DE LA NIÑEZ Y ADOLECENCIA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio </p>
+              <p>🕒 L-V De 8:00am a 12:00pm - 14:00pm a 18:00pm; S-D de 14:00pm a 16:00pm </p>
+              <p>📱 71091489 </p>
+              <p><a href=" https://maps.app.goo.gl/vmH6CpgQZvTETx7D6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" Casa judicial casa de la justicia denuncias  ">
+            <h4> CASA JUDICIAL </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio, lado de defensoria de la niñez </p>
+              <p>🕒 L-V de 8:00am a 16:00pm(horario continuo) </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/qS6bsaAt5XNcZWmQ9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" senasag registro de marca animales ">
+            <h4> SENASAG </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Mamey </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/TygaUdXu1ecWCDWD7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" direccion distrital de educacion directores colegios ">
+            <h4> DIRECCIÓN DISTRITAL DE EDUCACIÓN </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Mamey, lado de Senasag </p>
+              <p>🕒 L-V de 8:00am a 12:00pm - 14:00pm a 18:00pm </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/8K28RrtuYvbPAAQ36 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" segip servicio general de identificacion personal renovacion de carnet certificados ">
+            <h4> SEGIP </h4>
+            <div class="card-details">  
+              <p>📍  Barrio la frontera, Diagonal al coliseo municipal </p>
+              <p>🕒 L-V de 7:00am a 15:00pm; S-D de 8:00am 10:00am </p>
+              <p>📱 Linea gratuita 800101102 </p>
+              <p><a href=" https://maps.app.goo.gl/ApZiHZ8NjykX89838 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" centro de adulto mayor corimaqui ">
+            <h4> CORIMAQUI CENTRO DE ADULTO MAYOR </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Jirerh </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/JrPgtkquWksM9Bqn8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" hospital municipal de cuatro cañadas medico enfermera enfermo remedio enfermedad dengue resfrio ">
+            <h4> HOSPITAL MUNICIPAL CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio </p>
+              <p>🕒 24 horas (emergencias) </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/bemWXDZzoH9waWnT8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" matadero muncipal carne carnicero res vaca carniceria ">
+            <h4> MATADERO MUNICIPAL CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Carretera los troncos, pasando silos iasa </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/wcbz95xw1XwdEk4g6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" vivero municipal planta plantines fonabosque frutas reforestacion ">
+            <h4> VIVERO MUNICIPAL CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Carretera los troncos, lado de matadero municipal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/eMFvQsNrtVzHaeXAA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cementerio municipal nuevo velorio todo santos ">
+            <h4> CEMENTERIO MUNICIPAL CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Urb. Mamenco </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/HpqdbCnPXWQUJNGw8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cementerio general antiguo nichos difuntos ">
+            <h4> CEMENTERIO GENERAL ANTIGUO  </h4>
+            <div class="card-details">  
+              <p>📍  Barrio La Frontera, diagonal al coliseo </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/1Lu1KNwFaiJivRM9A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          EDUCACIÓN
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" unidad educativa nacional cuatro cañadas colegio  ">
+            <h4> U.E. NACIONAL CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Mamey </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/R2V8ijwkUxzgLHBn6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" colegio unidad educativa juan pablo 2 ii a ">
+            <h4> U.E. JUAN PABLO II A </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio </p>
+              <p>🧑‍🎓 Nivel: Inicial y primaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/TM94umhGzx7HCNFD6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa juan pablo ii a colegio ">
+            <h4> U.E. JUAN PABLO II B </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Jireh </p>
+              <p>🧑‍🎓 Nivel: Secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/HzURQA4jcRHLaUU86 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" colegio unidad educativa sagrado corazon de jesus ">
+            <h4> U.E. SAGRADO CORAZON DE JESUS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Monterrey </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/iot9YXQa8j1sR6vx8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" colegio unidad educativa belen ">
+            <h4> U.E. BELEN  </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Andres </p>
+              <p>🧑‍🎓 Nivel: Inicial y primaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/QY1S9c2yCxfedGuq9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa colegio san antonio ">
+            <h4> U.E. SAN ANTONIO </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Nueva Esperanza </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/SBrEvgNdmUAF2Pv7A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa perla del oriente colegio ">
+            <h4> U.E. PERLA DEL ORIENTE </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Oriental </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/rY3EDc3YPAdgUABp8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa colegio palestina ">
+            <h4> U.E. PALESTINA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Campo Verde </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/MvipeMpnsGDKmaZ17 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" colegio unidad educativa 26 de agosto ">
+            <h4> U.E. 26 DE AGOSTO </h4>
+            <div class="card-details">  
+              <p>📍  Comunidad 26 de Agosto </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/MLMwPi8LAFwYYsjc9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa jose luis castro colegio ">
+            <h4> U.E. JOSE LUIS CASTRO </h4>
+            <div class="card-details">  
+              <p>📍  Comunidad Puerto Rico </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/gWHaAkhP9NsHZE8a9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa san miguel de florida colegio ">
+            <h4> U.E. SAN MIGUEL DE FLORIDA </h4>
+            <div class="card-details">  
+              <p>📍  Comunidad San Miguel de Florida </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/4qcBsEW38sJQuem88 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa colegio monte rico b ">
+            <h4> U.E. MONTE RICO B </h4>
+            <div class="card-details">  
+              <p>📍  Comunidad Monte Rico  </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/zVoPhTAofC6NkbDt6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" unidad educativa cornelio saavedra a colegio ">
+            <h4> U.E. CORNELIO SAAVEDRA A </h4>
+            <div class="card-details">  
+              <p>📍  Comunidad Nuevo Palmar </p>
+              <p>🧑‍🎓 Nivel: Inicial, primaria y secundaria </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/SstqkxKLCByUVHi76 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          ACTIVIDADES DE RECREACIÓN
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" plaza principal de cuatro cañadas ">
+            <h4> PLAZA PRINCIPAL DE CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio </p>
+              <p>🕒 24 horas </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/FNwyg8adJaQRLxQe7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cancha san andres estadio de futbol ">
+            <h4> CANCHA SAN ANDRES </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Andres </p>
+              <p>🕒 24 horas </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/SjJBCdbpLho5qLxd8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" coliseo municipal cancha de futsal polifuncional boley basquet ">
+            <h4> COLISEO MUNICIPAL </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Mamey </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/6LqCkd6TzP6ZDNmZ8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cancha ded futbol campo verde ">
+            <h4> CANCHA CAMPO VERDE </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Campo Verde </p>
+              <p>🕒 24 horas </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/EYbXVNNXwo3YUCep9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cancha sintetica ventura sport piscina ">
+            <h4> PISCINA Y CANCHA SINTETICA VENTURA SPORTS </h4>
+            <div class="card-details">  
+              <p>📍  Urbanización Mamenco </p>
+              <p>🕒 L-D de 8:00am a 23:00pm </p>
+              <p>📱 77907233 </p>
+              <p><a href=" https://maps.app.goo.gl/LqggvACDEDRM7YWS7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cancha sintetica soccer city socer futbol 7 ">
+            <h4> CANCHA SINTETICA SOCCER CITY </h4>
+            <div class="card-details">  
+              <p>📍  Urbanización Mamenco </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/vudNfnKyn4s1GZC27 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cancha polifuncional barrio centro florida futsal basquet boley ">
+            <h4> CANCHA POLIFUNCIONAL B/ CENTRO FLORIDA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Centro Florida </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/BDTdP8pnaShoWhv76 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cancha polifuncional barrio la frontera futsal basquet boley ">
+            <h4> CANCHA POLIFUNCIONAL B/ LA FRONTERA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio La Frontera </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/HFKuDZ8aDQpqeFDg6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" cancha polifuncional 1 de mayo primero de mayo futsal boley basquet ">
+            <h4> CANCHA POLIFUNCIONAL  B/ 1RO DE MAYO </h4>
+            <div class="card-details">  
+              <p>📍  Barrio 1ro de Mayo </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/EiGTAUtSwJbi466PA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" piscina los cantaros ">
+            <h4> PISCINA LOS CANTAROS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Bella Vista </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 71038698 </p>
+              <p><a href=" https://maps.app.goo.gl/Xn5FcM7mXjoz6LhSA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" plaza barrio nueva esperanza plazuela ">
+            <h4> PLAZA B/ NUEVA ESPERANZA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Nueva Esperanza, frente a la UE San Antonio </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/VLX59myU74L6WwNa8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>   
+          <div class="card" data-name=" karaoke la locura bar discoteca boliche ">
+            <h4> KARAOKE LA LOCURA MIX  </h4>
+            <div class="card-details">  
+              <p>📍  Barrio La Frontera </p>
+              <p>🕒 J-D de 19:00pm a 03:00am </p>
+              <p>📱 71308585 </p>
+              <p><a href=" https://maps.app.goo.gl/F4wajMQo4StV3EGVA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div> 
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          BANCOS Y ENTIDADES FINANCIERAS
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" banco mercantil santa cruz entidad financiera cajero ">
+            <h4> BANCO MERCANTIL SANTA CRUZ </h4>
+            <div class="card-details">  
+              <p>📍  Sobre la carretera principal, barrio San Antonio </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 33633000 </p>
+              <p><a href=" https://maps.app.goo.gl/KDdo2NtqQJzhKPLT6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" banco economico cajero entidad financiera ">
+            <h4> BANCO ECONÓMICO   </h4>
+            <div class="card-details">  
+              <p>📍  sobre la carretera principal, barrio Urkupiña, entrada a chiuhua </p>
+              <p>🕒 L-V de 9:00am a 16:00pm; S de 9:00am a 13:00pm </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/SoySwn1iawKiCBbLA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" banco union entidad financiera cajero ">
+            <h4> BANCO UNIÓN </h4>
+            <div class="card-details">  
+              <p>📍  Frente a la plaza principal, barrio San Antonio </p>
+              <p>🕒 L-V de 9:00am a 16:00pm </p>
+              <p>📱 39656357 </p>
+              <p><a href=" https://maps.app.goo.gl/8A2zYi4G1W8qGYmP6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" banco ecofuturo entidad financiera cajero  ">
+            <h4> BANCO ECOFUTURO </h4>
+            <div class="card-details">  
+              <p>📍  Sobre la carretera principal, barrio Lindo, casi entrada a 4 de Marzo </p>
+              <p>🕒 L-V de 8:00am a 15:30pm; S de 9:00am a 12:30pm </p>
+              <p>📱 39656367 </p>
+              <p><a href=" https://maps.app.goo.gl/L5hjH3JWEM1mG29L9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" tigo money cellpaz center envio de dinero ">
+            <h4> PUNTO TIGO MONEY CELLPAZ CENTER </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Campo Verde </p>
+              <p>🕒 L-D de 7:30am a 20:00pm </p>
+              <p>📱 77022211 </p>
+              <p><a href=" https://maps.app.goo.gl/XsDiDn6VeaDuT3N8A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          COMIDAS Y HOSPEDAJE
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" hotel alojamiento hostal baires ">
+            <h4> HOTEL BAIRES </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Campo Verde </p>
+              <p>🕒 24 horas </p>
+              <p>📱 79002730 </p>
+              <p><a href=" https://maps.app.goo.gl/xSHP1hq4UauXDxx9A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" hotel alojamiento hostal residencial cuatro cañadas ">
+            <h4> RESIDENCIAL CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Sobre la carretera Barrio Centro Florida </p>
+              <p>🕒 24 horas </p>
+              <p>📱 60996450 </p>
+              <p><a href=" https://maps.app.goo.gl/8CeQt1XjwPi9s66N9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" hotel alojamiento hostal residencial cochabamba ">
+            <h4> ALOJAMIENTO COCHABAMBA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio San Antonio </p>
+              <p>🕒 24 horas </p>
+              <p>📱 79490209 </p>
+              <p><a href=" https://maps.app.goo.gl/JnYyeX1c4hbRNPyA6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante bar comida almuerzo cena pension ">
+            <h4> BAR RESTAURANTE BAIRES </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Campo Verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/ZfNpJ3qcB4Tc7uzc8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante comida almuerzo cena pension ">
+            <h4> RESTAURANT CAÑAQING </h4>
+            <div class="card-details">  
+              <p>📍  Frente a la plaza principal Barrio Lindo </p>
+              <p>🕒 L-D de 11:00am–10:00pm </p>
+              <p>📱 77031988 </p>
+              <p><a href=" https://maps.app.goo.gl/jdofnBjYXZGpQyTS7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante comida pollo almuerzo cena pension ">
+            <h4> RESTAURANTE ARANIBAR </h4>
+            <div class="card-details">  
+              <p>📍  Carretera Principal Barrio Campo Verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/3W9M8HGyJVmQv2v27 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante bar comida almuerzo cena pension ">
+            <h4> BAR RESTAURANTE LA CASONA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera Principal Barrio Mamey </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/LCL6wzxwNSndzAfb8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante comida almuerzo cena pension churrasqueria ">
+            <h4> RESTAURANT CHURRASQUERIA LA FRONTERA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera Principal Barrio la Frontera </p>
+              <p>🕒 M-D de 10:30am a 9:30pm </p>
+              <p>📱 64489044 </p>
+              <p><a href=" https://maps.app.goo.gl/j2zgcfVkaitsM53s8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante comida almuerzo cena pension  ">
+            <h4> RESTAURAN LA CABAÑITA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Oriental </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 69195809 </p>
+              <p><a href=" https://maps.app.goo.gl/szGY9bj2PVEq2EqB9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante bar comida cena pension ">
+            <h4> RESTO BAR MAIA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Monterrey </p>
+              <p>🕒 M-D de 4:00pm a 1:00am </p>
+              <p>📱 75657690 </p>
+              <p><a href=" https://maps.app.goo.gl/4G7V9VwYaVZH6h8g9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante comida almuerzo cena pension mexicana cielito lindo sazon  ">
+            <h4> RESTAURANTE CIELITO LINDO SAZON MEXICANO </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Urkupiña atras del banco economico </p>
+              <p>🕒 L-D de 9:00am–9:00pm </p>
+              <p>📱 75016840 </p>
+              <p><a href=" https://maps.app.goo.gl/t9HTwZaYtxU5kXtY8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante comida cena pension pizza postres ">
+            <h4> COMIDA RAPIDA DELICIAS DE VALENTINA </h4>
+            <div class="card-details">  
+              <p>📍  Al frente de la plaza Barrio Lindo </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 68709146 </p>
+              <p><a href=" https://maps.app.goo.gl/UUduE2GsdY8J8kKf9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" restaurante comida almuerzo cena pension ">
+            <h4> RESTAURANT PRIMAVERA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Jireh </p>
+              <p>🕒 Sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/xhLbYttPuUrXLHkZ7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          TALLERES Y REPUESTOS
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" gomeria aire parchado  ">
+            <h4> GOMERIA BARRIO MAMEY </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Mamey </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/1z4JsFcZ1XWvt22j9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" gomeria aire parchado  ">
+            <h4> GOMERIA BARRIO BELLA VISTA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Bella Vista </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/c8kaftc6C9iWpC2W6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" gomeria aire parchado  ">
+            <h4> GOMERIA BARRIO CENTRO FLORIDA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Centro Florida </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/dAHqxmweJd6VpW7i8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" gomeria aire parchado  ">
+            <h4> GOMERIA BARRIO SAN ANTONIO </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio San Antonio </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/NsFSPwNLdYYrqL2y8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller mecanico mecanica auto ">
+            <h4> TALLER MECANICA ARANCIBIA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Mamey </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/7YudhiPEtqu2Ytvr6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller mecanico mecanica camiones camion auto ">
+            <h4> TALLER MECANICO DE CAMIONES </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Urkupiña </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/EUMYPkoMZfBcf7Ly9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller soldadura arco y oxigeno soldador ">
+            <h4> TALLER DE SOLDADURA Y OXIGENO </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio La Frontera </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/DaXstLbR7Zh7kDn4A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller electrico volvo camiones camion ">
+            <h4> TALLER ELECTRICO VOLVO </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Urkupiña </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/MLQz1sTvnoPUxwxCA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller mecanico mecanica auto ">
+            <h4> TALLER MECANICO SOTO </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Campo Verde </p>
+              <p>🕒  L-S de 8:00am–8:00pm </p>
+              <p>📱 67842349 </p>
+              <p><a href=" https://maps.app.goo.gl/sdMatKqnQGY5NsNF9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller mecanico mecanica auto ">
+            <h4> TALLER MECANICO CRUZ </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Bella Vista </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/EQZrmcAAq5iBPCfY7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller mecanico mecanica auto radiadores muelles ">
+            <h4> MECANICO DE RADIADORES Y MUELLERIA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio Mamey </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/att2MDXc2kKzGqzc7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller motos mecanico moto ">
+            <h4> TALLER DE MOTOS WILLIAN </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal Barrio San Antonio </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/kwjnD1XF5Frnpx429 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" agromangeras prensado de mangueras agro tractores maquinarias repuestos ">
+            <h4> AGROMANGUERAS PRENSADO DE MANGUERAS </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, Barrio Campo Verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 77082597 </p>
+              <p><a href=" https://maps.app.goo.gl/kCPXbtnq3XRNz1aw5 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" auto repuestos lopez autorepuestos  ">
+            <h4> AUTO REPUESTOS LOPEZ </h4>
+            <div class="card-details">  
+              <p>📍  Carretra principal, barrio Campo Verde </p>
+              <p>🕒 L-V de 7:30am a 12:00pm - 13:30pm a 18:00pm: S de 7:30am a 12:00pm </p>
+              <p>📱 75645868 </p>
+              <p><a href=" https://maps.app.goo.gl/n9YXfmdQnSsfXPV97 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller de frenos friccion  ">
+            <h4> TALLER DE FRENOS FRICCIÓN </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Urkupiña sobre la carretra principal </p>
+              <p>🕒 L-S de 7:00am a 20:00pm </p>
+              <p>📱 70209660 </p>
+              <p><a href=" https://maps.app.goo.gl/JJ6NAaBbqbtyvnzj6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" lubricantes y repuestos bety venta ">
+            <h4> LUBRICANTES Y REPUESTOS BETY </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Bella Vista, sobre la carretera principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/9QXjHn78vBBtr3cz8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" lavado de vehiculos lavadero de autos  ">
+            <h4> LAVADO DE VEHICULOS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio, sobre la carretera principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/chb5VhPpgzKb9hSP6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" venta de baterias toyo  ">
+            <h4> BATERIAS TOYO </h4>
+            <div class="card-details">  
+              <p>📍  Bario La Fronterra, sobre la carretera principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/BL6LqNHWkVXc8mLQ7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" agro repuestos arnold agro repuestos maquinaria tractor pesada ">
+            <h4> AGRO REPUESTOS ARNOLD </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Oriental, sobre la carrretera principal </p>
+              <p>🕒 L-V de 8:00am a 18:30pm; S de 8:00am a 12:30pm </p>
+              <p>📱 71623810 </p>
+              <p><a href=" https://maps.app.goo.gl/7djrV6rAeFEGY5P9A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          CONSTRUCCIÓN
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" ferreteria comodin herramientas cemento ladrillo ">
+            <h4> FERRETERIA COMODIN </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio San Antonio </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/k7srTFRBALAkEYYa9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" ferreteria ticlla ">
+            <h4> FERRETERIA TICLLA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Oriental </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/bNBdmFZTzEd8ZCDc7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" ferreteria rio grande  ">
+            <h4> FERRETERIA RIO GRANDE </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Campo Verde </p>
+              <p>🕒 L-S de 7:00am a 19:00pm </p>
+              <p>📱 76365308 </p>
+              <p><a href=" https://maps.app.goo.gl/TEBstLkvRDRb4FXYA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" barraca y carpinteria alexander alexanders madera puerta mueble ">
+            <h4> BARRACA Y CARPINTERIA ALEXANDER </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Oriental </p>
+              <p>🕒 L-S de 8:00am a 18:00pm </p>
+              <p>📱 77697845 </p>
+              <p><a href=" https://maps.app.goo.gl/NLXRAso8kxRnXfrf8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farben agencia distribuidora de pintura ">
+            <h4> FARBEN AGENCIA DISTRIBUIDORA DE PINTURA </h4>
+            <div class="card-details">  
+              <p>📍  Sobre la carretera principal, barrio campo verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/VEZMU9zLUD8VQ3RF6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" vidrieria santos ">
+            <h4> VIDRIERIA SANTOS </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Campo Verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/AXMHyYA57Pe3aatz5 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" comercial de ceramicas cerrabol gladymar coboce ceramica pisos azulejos revestimientos ">
+            <h4> COMERCIAL CERABOL CERAMICAS </h4>
+            <div class="card-details">  
+              <p>📍  carretera principal, barrio Centro Florida </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/17yRnJHwh1rptJvRA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" hormigon prefabricado fortaleza tubos, viguetas, anillos, losetas,  ">
+            <h4> HORMIGON PREFABRICADO FORTALEZA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera Principal, barrio Campo Verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/wWBHKffCDL4LaiyE7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" taller metalurgico bernabe tinglados galpones fierros calaminas techos construccion ">
+            <h4> TALLER METALURGICO BERNABE </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Andres </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 76000514 </p>
+              <p><a href=" https://maps.app.goo.gl/1JLwTmWqEuetbXJE8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" pernoagro perno agro ferreteria pernos repuestos ">
+            <h4> PERNO AGRO </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio campo verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/TycBm9StyHS9eSqR7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          COMERCIALES Y MERCADOS
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" mercado municipal 15 de agosto abarrotes canasta familiar comidas ">
+            <h4> MERCADO MUNICIPAL 15 DE AGOSTO </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Bella Vista </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/5coqbz7i5yWyan1eA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" supermercado cuatro cañadas market minisuper mercado minmarket ">
+            <h4> SUPERMERCADO CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Centro Florida </p>
+              <p>🕒 L-S de 7:00am a 21:00pm </p>
+              <p>📱 70863113 </p>
+              <p><a href=" https://maps.app.goo.gl/9mKoH3YBZRbkQpme7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" mercado 15 de noviembre venta de carne viberes frial  ">
+            <h4> MERCADO 15 DE NOVIEMBRE </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Urkupiña </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/84iPBfotnDKYC5TY7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" feria dominical urkupiña 15 de noviembre mercado ">
+            <h4> FERIA DOMINICAL  </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Urkupiña, detrás del mercado 15 de noviembre </p>
+              <p>🕒 Solo Domingos </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/hFLXUuFi9yreu8NUA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" centro comercial villa fatima mercado peluqueria ">
+            <h4> CENTRO COMERCIAL VILLA FATIMA </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, entrada hacia la plaza principal, barrio Lindo </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/5vhj1HYso5vSyY729 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" mercado 10 de octubre comercial abarrotes viberes ">
+            <h4> MERCADO 10 DE OCTUBRE </h4>
+            <div class="card-details">  
+              <p>📍  Carretera principal, barrio Oriental </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/TZTFzDLnpsFX2vF16 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" emapa cuatro cañadas  ">
+            <h4> EMAPA CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Urkupiña, sobre la carretera principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/7dYaSBBzHz9epsQD8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" frial loaiza loayza loaisa carniceria carne res vaca ">
+            <h4> FRIAL LOAYZA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Oriental, Centro Comercial Villa Fatima  </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/p9tfE68H6rg9TQTQA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" agencia pil leche yougurt ">
+            <h4> AGENCIA PIL CUATRO CAÑADAS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Andres </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/D6PMegrQcypxVZh36 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          SALUD Y FARMACIA
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" centro medico rofel verafar hospital clinica farmacia salud doctor emergencia ">
+            <h4> CENTRO MEDICO ROFEL VERAFAR </h4>
+            <div class="card-details">  
+              <p>📍  Barrio La frontera, sobre la carretera principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 62133158 </p>
+              <p><a href=" https://maps.app.goo.gl/StpzCv8aaGK9jtwQ8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farmacia surtyfar surtifar ">
+            <h4> FARMACIA SURTYFAR </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio, sobre la carretera principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 77886442 </p>
+              <p><a href=" https://maps.app.goo.gl/vzuW74WBaMMd3gzP9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farmacia zulefar sulefar  ">
+            <h4> FARMACIA ZULEFAR </h4>
+            <div class="card-details">  
+              <p>📍  Entrada a 4 de Marzo, barrio Lindo </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 69083480 </p>
+              <p><a href=" https://maps.app.goo.gl/VNREELCNhBQ2qWTA7 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farmacia y consultorio cardenas medico dorctor hospital clinica ">
+            <h4> FARMACIA Y CONSULTORIO CARDENAS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Campo Verde </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 74649459 </p>
+              <p><a href=" https://maps.app.goo.gl/u6PpXWrxcXajB4kGA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" clinica semaclin hospital farmacia doctor conultorio  ">
+            <h4> CLINICA SEMACLIN </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Jireh </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/xqSQJnyMaauJ2ayN8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farmacia farmabio  ">
+            <h4> FARMABIO </h4>
+            <div class="card-details">  
+              <p>📍  Frente al mercado municipal, barrio Bella Vista </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/sybpUXxZiumNdPX3A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farmacia eileen eilen ">
+            <h4> FARMACIA EILEEN </h4>
+            <div class="card-details">  
+              <p>📍  FARMACIA EILEEN </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/QjH7w2UfLa6EpPSL9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farmacia y consultorio milagros hospital clinica doctor medico  ">
+            <h4> FARMACIA Y CONSULTORIO MILAGROS </h4>
+            <div class="card-details">  
+              <p>📍  Frente al hospital minicipal, barrio San Antonio </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 73100096 </p>
+              <p><a href=" https://maps.app.goo.gl/PkE4Dv5Udih8W6Vz8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" farmacia salud y vida  ">
+            <h4> FARMACIA SALUD Y VIDA </h4>
+            <div class="card-details">  
+              <p>📍  Entrada hacia hospital municipal, barrio San Anotnio  </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 63466526 </p>
+              <p><a href=" https://maps.app.goo.gl/oUe3JRDp3C4xrizP8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" centro medico virgen de urkupiña hospital clinica emergencia doctor medico farmacia ">
+            <h4> CENTRO MÉDICO VIRGEN DE URKUPIÑA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Centro Florida, sobre la carretera principal </p>
+              <p>🕒 Abierto las 24 horas </p>
+              <p>📱 70044712 </p>
+              <p><a href=" https://maps.app.goo.gl/1a2uZCK87WG25BXa8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" centro medico niño jesus hospital clinica emergencia doctor medico farmacia ">
+            <h4> CENTRO MÉDICO NIÑO JESÚS </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Lindo </p>
+              <p>🕒 Abierto las 24 horas </p>
+              <p>📱 70044712 </p>
+              <p><a href=" https://maps.app.goo.gl/HZWJ6AGqdJBT82z86 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" Biojez laboratorio clínico clinico clinica  ">
+            <h4> BIOJEZ LABORATORIO CLÍNICO  </h4>
+            <div class="card-details">  
+              <p>📍  Barrio jireh </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 75567137 </p>
+              <p><a href=" https://maps.app.goo.gl/zksSTT8uexo64cMQA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" laboratorio colquelab clinica estudio clinico medico doctor  ">
+            <h4> LABORATORIO COLQUELAB </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 76683431 </p>
+              <p><a href=" https://maps.app.goo.gl/vsV9PvWVvbMUKvcP8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          OTROS SERVICIOS
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name=" notaria de fe publica n° 1 registro civil contrato abogado ">
+            <h4> NOTARIA DE FÉ PUBLICA N° 1 </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Campo Verde </p>
+              <p>🕒 L-V de 8:00am a 18:300pm; S de 8:00 a 13:30 </p>
+              <p>📱 73623431 </p>
+              <p><a href=" https://maps.app.goo.gl/oiEMSsz3nsmjidfj9 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" notaria de fe publica n° 2 registro civil contrato abogado ">
+            <h4> NOTARIA DE FÉ PUBLICA N° 2 </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Bella Vista, frente al mercado municipal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/Wegt9fXH9TJYweSk8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" notaria de fe publica n° 3 registro civil contrato abogado ">
+            <h4> NOTARIA DE FE PÚBLICA N° 3 </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio, frente a la plaza pincipal </p>
+              <p>🕒 L-V de 8:30am a 16:00pm; S de 8:30am a 13:00pm </p>
+              <p>📱 67888597 </p>
+              <p><a href=" https://maps.app.goo.gl/pcNQUH5BKRzqSExHA " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" registro civil casamiento boda divorsio abogada doctora jueza ">
+            <h4> REGISTRO CIVIL </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Mamey </p>
+              <p>🕒 L-V de 8:30am a 12:00pm - 14:30pm a 18:00pm; S de 8:30am a 12:00pm </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/4UxSPzeqGpUN5L27A " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" multiservicios almanza tecnico de celulares reparacion de computadora impresiones ">
+            <h4> MULTISERVICIOS ALMANZA </h4>
+            <div class="card-details">  
+              <p>📍  Barrio San Antonio </p>
+              <p>🕒 D-J de 8:00am a 22:00pm; V de 8:00am a 18:00pm </p>
+              <p>📱 71076194 </p>
+              <p><a href=" https://maps.app.goo.gl/bwFewDrhxMfgN84X8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" peluqueria deivis luuk deyvis look loonk luc luk deyvid ">
+            <h4> PELUQUERIA "DEIVIS LUUK" </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Centro Florida </p>
+              <p>🕒 L-D de 7:00am a 22:00p </p>
+              <p>📱 65005137 </p>
+              <p><a href=" https://maps.app.goo.gl/p59D4zmwgCWpWk196 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" peluqueria con estilo stylo estylo  ">
+            <h4> PELUQUERIA "CON ESTILO" </h4>
+            <div class="card-details">  
+              <p>📍  Entrada a la plaza principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 78418598 </p>
+              <p><a href=" https://maps.app.goo.gl/hdbPuLvLfTJ3YEbi6 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" sastreria wilor novios trajes uniformes costura taller camisas poleras sacos bleiser pantalones corbatas ">
+            <h4> SASTRERIA WILORD NOVIOS </h4>
+            <div class="card-details">  
+              <p>📍  Entrada a la plaza principal, lado de comercial Villa Fatima </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 70037128 </p>
+              <p><a href=" https://maps.app.goo.gl/h54znXdnQHiCjRC77 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" agroveterinaria yuarvau agro veterinaria animales perro vaca ganado  ">
+            <h4> AGROVETERIANRIA YUARBAU </h4>
+            <div class="card-details">  
+              <p>📍  Barrio Centro Florida, sobre la carretera principal </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 S/N </p>
+              <p><a href=" https://maps.app.goo.gl/6C2PF2i1NcDmUMTE8 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+          <div class="card" data-name=" veterinaria vet patitas vacas ganado perros gatos mascotas ">
+            <h4> VET PATITAS </h4>
+            <div class="card-details">  
+              <p>📍  Comunidad 26 de Agosto, Visita a propiedades ganaderas </p>
+              <p>🕒 sin especificar </p>
+              <p>📱 68771921 </p>
+              <p><a href=" https://maps.app.goo.gl/CiShAq91jfGQ3H578 " target=_blank">🗺️ Cómo llegar</a></p>
+            </div>  
+          </div>  
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          TRANSPORTE (TRUFIS)
+          <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+          <div class="card" data-name="taller don ñeco">
+            <h4>Muy pronto</h4>
+            <div class="card-details">
+              <p>Ubicación: Plaza Principal</p>
+              <p>Teléfono: 123456789</p>
+              <p>Descripción: Gobierno municipal</p>
+            </div>
+          </div>
+          <div class="card" data-name="taller de frenos">
+            <h4>Muy pronto</h4>
+            <div class="card-details">
+              <p>Ubicación: Calle Bolívar</p>
+              <p>Teléfono: 987654321</p>
+              <p>Descripción: Atención de emergencias</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AGREGA AQUÍ MÁS CATEGORÍAS -->
+      <!-- COPIA Y PEGA TUS CATEGORÍAS AQUÍ SIN CAMBIOS -->
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggleCategorias = document.getElementById('toggleCategorias');
+  const container = document.getElementById('accordionContainer');
+  const mainArrow = toggleCategorias.querySelector('.arrow');
+
+  toggleCategorias.addEventListener('click', () => {
+    const isVisible = container.style.display === 'block';
+    container.style.display = isVisible ? 'none' : 'block';
+    toggleCategorias.classList.toggle('active', !isVisible);
+  });
+
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    if (header !== toggleCategorias) {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const isActive = header.classList.contains('active');
+
+        document.querySelectorAll('.accordion-header').forEach(h => {
+          if (h !== toggleCategorias) h.classList.remove('active');
+        });
+        document.querySelectorAll('.accordion-content').forEach(c => {
+          if (c !== container) c.style.display = 'none';
+        });
+
+        if (!isActive) {
+          content.style.display = 'block';
+          header.classList.add('active');
+        }
+      });
+    }
+  });
+
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      const details = card.querySelector('.card-details');
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  document.getElementById('searchInput').addEventListener('input', function () {
+    const search = this.value.trim().toLowerCase();
+    let found = false;
+
+    if (search === "") {
+      // Restaurar todo a estado inicial visible pero cerrado
+      document.querySelectorAll('#accordionContainer .accordion-item').forEach(item => {
+        item.style.display = 'block'; // <-- dejar visibles para poder desplegar después
+        item.querySelector('.accordion-content').style.display = 'none';
+        item.querySelector('.accordion-header').classList.remove('active');
+
+        // Mostrar todas las tarjetas
+        item.querySelectorAll('.card').forEach(card => {
+          card.style.display = 'block';
+        });
+      });
+
+      container.style.display = 'none';
+      toggleCategorias.classList.remove('active');
+      return;
+    }
+
+    document.querySelectorAll('#accordionContainer .accordion-item').forEach(item => {
+      const cards = item.querySelectorAll('.card');
+      let showSection = false;
+
+      cards.forEach(card => {
+        const name = card.dataset.name;
+        const match = name.includes(search);
+        card.style.display = match ? 'block' : 'none';
+        if (match) showSection = true;
+      });
+
+      item.style.display = showSection ? 'block' : 'none';
+      item.querySelector('.accordion-content').style.display = showSection ? 'block' : 'none';
+      item.querySelector('.accordion-header').classList.toggle('active', showSection);
+
+      if (showSection) found = true;
+    });
+
+    if (found) {
+      container.style.display = 'block';
+      toggleCategorias.classList.add('active');
+    }
+  });
+</script>
+
+
+<div style="max-width: 800px; margin: 0rem auto; background: rgba(255, 255, 255, 0); padding: 0rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <h3 style="color: #ffffff; margin-bottom: 0rem; text-align: center;">CUATRO CAÑADAS POR BARRIOS</h3>
+  <iframe 
+    src="https://www.google.com/maps/d/u/0/embed?mid=1xVfisre-nnSdYpcV2IOnyN1YT7beq8I&ehbc=2E312F" 
+    width="100%" 
+    height="480" 
+    style="border: none; border-radius: 8px;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
+</body>
+</html>
